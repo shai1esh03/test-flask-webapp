@@ -5,29 +5,46 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+        <style>
+            #banner {
+                height: 360px;
+                width: 100%;
+                object-fit: cover;
+                margin-bottom: 16px;
+            }
+        </style>
     </head>
     <body>
         {% include 'nav.html' %}
-        <img class='img-fluid' id='banner' src='http://192.168.0.3:5000/static/jobs.jpg'>
+        <img class='img-fluid' id='banner' src='/static/jobs.jpg'>
         <div class='container'>
-            <h1 class='text-center mt-2 mb-4'>CAREERS</h1>
+            <h1 class='text-center mt-2 mb-4'>{{company_name}} Careers</h1>
             <h2 class='text-center mt-2 mb-4'>About Careers</h2>
+            <div class='row' style='margin-bottom:16px;'>
+                <div class='col-md-6'>
             <p class='lead'>
             Lorem ipsum dolor sit amet, consectetur adipiscing elit. In massa nunc, efficitur vel metus sit amet, iaculis posuere lacus. 
             Quisque ipsum quam, consectetur ut porta fermentum, auctor nec lectus. Aenean rhoncus pellentesque tempus. Suspendisse tristique porta mauris vehicula fringilla. 
             Aenean gravida condimentum interdum. Aenean a lectus id sem ultricies varius id ut dolor. Ut congue lacus nunc, sit amet blandit est imperdiet at. 
             Praesent vel auctor enim, ornare iaculis felis. Vivamus nec molestie eros. Vivamus ac felis sem. Suspendisse felis sem, posuere id ipsum non, feugiat egestas odio. 
             Vestibulum in dapibus tellus. Nunc convallis justo nec massa dictum, a semper lorem tincidunt.
-
-            Donec id sodales metus. Mauris ipsum ligula, gravida sed vulputate eget, ultricies non est. Etiam eleifend pulvinar quam in dictum. 
-            Donec ornare accumsan ante ut sollicitudin. Duis accumsan scelerisque enim, sit amet sollicitudin elit fringilla ac. Ut eleifend lacinia cursus. 
-            Ut vitae nunc aliquam, porttitor magna eget, rutrum odio. Curabitur id sodales augue.
             </p>
+                </div>
+                <div class='d-none d-md-block col-md-6'>
+                <img src='/static/people.jpg' style='height:320px; border-radius:4px;'>
+                </div>
+        </div>
             <h2 class='text-center mt-2 mb-4'>Open Positions</h2>
-            <p>TODO</p>
+            <div>
+                {% for job in jobs%}
+                    {%  include 'jobitem.html' %}
+                {% endfor %}
+            </div>
+                
+        
             <div class='text-center'>
-            <button class="btn btn-primary btn-lg">Contact Us</button>
-            <p class='mt-4'> Copyright 2023, shailesh</p>
+            <a class="btn btn-primary btn-lg"
+            href='mailto:contactus@t.com'>Contact Us</a>
             </div>
         </div>
         {% include 'footer.html' %}
